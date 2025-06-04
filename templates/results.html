@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Barra de busca persistente -->
+<div class="row justify-content-center mb-4">
+  <div class="col-md-6">
+    <form method="GET" action="/search">
+      <div class="input-group">
+        <input
+          name="query"
+          value="{{ termo }}"
+          type="text"
+          class="form-control bg-secondary text-light border-0"
+          placeholder="Buscar GIFs..."
+          required
+        >
+        <button class="btn btn-outline-light" type="submit">Buscar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<h5 class="mb-3">Resultados para “{{ termo }}”</h5>
+<div class="row">
+  {% for url in gifs[:5] %}
+  <div class="col-md-4 mb-4">
+    <div class="card bg-secondary border-0">
+      <img src="{{ url }}" class="card-img-top" alt="GIF">
+      <div class="card-body">
+        <a
+          href="https://wa.me/?text={{ url }}"
+          target="_blank"
+          class="btn btn-success w-100"
+        >
+          Enviar pelo WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<a href="/" class="btn btn-outline-light mt-3">Nova busca</a>
+{% endblock %}

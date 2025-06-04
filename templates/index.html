@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>GIFthy</title>
+</head>
+<body>
+  <h1>Busque um GIF</h1>
+  <form method="POST">
+    <input type="text" name="termo" placeholder="Digite um tema" required>
+    <button type="submit">Buscar</button>
+  </form>
+
+  <div>
+    {% for gif in gifs %}
+      <div style="margin-top: 20px;">
+        <img src="{{ gif }}" alt="GIF" width="300"><br>
+        <a href="https://wa.me/?text={{ gif }}" target="_blank">Enviar no WhatsApp</a>
+      </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
